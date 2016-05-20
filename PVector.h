@@ -1,18 +1,17 @@
 #pragma once
 
-template<typename T>
 class PVector
 {
 	private:
-		T x; // X component
-		T y; // Y component
+		double x; // X component
+		double y; // Y component
 
 	public:
 		PVector();
 
-		PVector(T x, T y);
+		PVector(double x, double y);
 
-		PVector<T> operator*(const double scalar);
+		PVector operator*(const double scalar);
 
 		~PVector();
 };
