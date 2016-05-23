@@ -11,14 +11,27 @@ PVector::PVector(double x, double y)
 	this->y = y;
 }
 
+PVector PVector::operator*(const double scalar)
+{
+	PVector resultVector(this->x * scalar, this->y * scalar);
+
+	return resultVector;
+}
+
+PVector PVector::operator+(const PVector& addedVector)
+{	
+	PVector resultVector(this->x + addedVector.getX(), this->y + addedVector.getY());
+
+	return resultVector;
+}
+
+double PVector::getX() const { return this->x; }
+void PVector::setX(double x) { this->x = x; }
+
+double PVector::getY() const { return this->y; }
+void PVector::setY(double y) { this->y = y; }
+
 PVector::~PVector()
 {
 
-}
-
-PVector PVector::operator*(const double scalar)
-{
-	PVector tempVector(this->x * scalar, this->y * scalar);
-
-	return tempVector;
 }
