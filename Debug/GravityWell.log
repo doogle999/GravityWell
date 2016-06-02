@@ -1,2 +1,2 @@
 ﻿  Main.cpp
-c:\users\user\documents\visual studio 2015\projects\gravitywell\gravitywell\main.cpp(30): error C2039: 'count': is not a member of 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::steady_clock::duration>'
+c:\users\user\documents\visual studio 2015\projects\gravitywell\gravitywell\main.cpp(23): error C3861: 'init': identifier not found

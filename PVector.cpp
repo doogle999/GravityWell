@@ -25,6 +25,15 @@ PVector PVector::operator+(const PVector& addedVector)
 	return resultVector;
 }
 
+PVector PVector::operator-(const PVector& subtractedVector)
+{
+	PVector resultVector(this->x - subtractedVector.getX(), this->y - subtractedVector.getY());
+
+	return resultVector;
+}
+
+void PVector::setXY(double x, double y) { this->x = x; this->y = y; }
+
 double PVector::getX() const { return this->x; }
 void PVector::setX(double x) { this->x = x; }
 

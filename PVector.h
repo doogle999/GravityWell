@@ -15,6 +15,10 @@ class PVector
 
 		PVector operator+(const PVector& addedVector);
 
+		PVector operator-(const PVector& subtractedVector);
+
+		void setXY(double x, double y);
+
 		double getX() const;
 		void setX(double x);
 
