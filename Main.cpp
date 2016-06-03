@@ -1,41 +1,50 @@
 #include <stdio.h>
 
+#include <SFML/Graphics.hpp>
+
 #include <chrono>
 #include <ratio>
 
 #include "PVector.h"
 #include "Entity.h"
+#include "GravityField.h"
 
 typedef std::chrono::duration<double, std::ratio<1, 1000>> milliseconds;
 const milliseconds MS_PER_UPDATE(50);
 
+const int WINDOW_HEIGHT = 600;
+const int WINDOW_WIDTH = 800;
+
 int main()
 {
-	Entity thing;
-
-	thing.setPose(0, 0, 1, 0, 0, 0);
-
-	bool quit = false;
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Gravity Well");
 
 	std::chrono::steady_clock::time_point previous = std::chrono::steady_clock::now();
 	milliseconds lag(0);
 
-	while (!quit)
+	while (window.isOpen())
 	{
 		std::chrono::steady_clock::time_point current = std::chrono::steady_clock::now();
 		milliseconds elapsed = std::chrono::duration_cast<milliseconds>(current - previous);
 		previous = current;
 		lag += elapsed;
 
-		// Input
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+			}
+		}
 
 		while (lag >= MS_PER_UPDATE)
 		{
-			thing.update(MS_PER_UPDATE.count());
 			lag -= MS_PER_UPDATE;
 		}
 
-		// Render
+		window.clear();
+		window.display();
 	}
 
 	return 0;

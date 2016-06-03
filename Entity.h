@@ -1,6 +1,11 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+#include <cmath>
+
 #include "PVector.h"
+
+#define PI 3.14159265358979323846
 
 class Entity
 {
@@ -8,7 +13,12 @@ class Entity
 		PVector position;
 		PVector velocity;
 		PVector acceleration;
+
 		double mass;
+		static const double density;
+
+		sf::CircleShape shape;
+		static const sf::Color color;
 
 	public:
 		Entity();
@@ -32,7 +42,7 @@ class Entity
 
 		void update(double deltaTime); // Milliseconds
 
-		void render();
+		sf::CircleShape getShape() const;
 
 		void setMass(double mass);
 		double getMass() const;

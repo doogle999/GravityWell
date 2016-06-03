@@ -1,13 +1,13 @@
 #pragma once
 
-#include <math.h>
+#include <cmath>
 #include <vector>
 
 #include "Entity.h"
 
-const double GRAV_CONSTANT = 6.67408e-11;
+#define GRAV_CONSTANT 6.67408e-11
 
-class GravityField
+class GravityField // A box for entities that also has gravity
 {
 	private:
 		std::vector<Entity*> entities;
@@ -17,7 +17,9 @@ class GravityField
 
 		void addEntity(Entity* addedEntity);
 
-		PVector getGravAccleration(PVector position);
+		PVector getGravAcceleration(PVector position);
+
+		void update(double deltaTime); // Milliseconds, updates all entities with gravity as acceleration
 
 		~GravityField();
 };

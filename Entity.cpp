@@ -1,8 +1,12 @@
 #include "Entity.h"
 
+const double Entity::density = 1000000;
+
+const sf::Color Entity::color = sf::Color::White;
+
 Entity::Entity()
 {
-
+	shape.setFillColor(color);
 }
 
 Entity::Entity(PVector position, PVector velocity, PVector acceleration, double mass)
@@ -11,6 +15,9 @@ Entity::Entity(PVector position, PVector velocity, PVector acceleration, double 
 	this->velocity = velocity;
 	this->acceleration = acceleration;
 	this->mass = mass;
+
+	shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double)1 / 3));
+	shape.setFillColor(color);
 }
 
 void Entity::setPose(PVector position, PVector velocity, PVector acceleration)
@@ -43,9 +50,13 @@ void Entity::update(double deltaTime)
 {
 	position = position + (velocity * (deltaTime / 1000));
 	velocity = velocity + (acceleration * (deltaTime / 1000));
+
+	shape.setPosition(position.getX(), position.getY());
 }
 
-void Entity::setMass(double mass) { this->mass = mass; }
+sf::CircleShape Entity::getShape() const { return this->shape; }
+
+void Entity::setMass(double mass) { this->mass = mass; shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double)1 / 3)); }
 double Entity::getMass() const { return this->mass; }
 
 Entity::~Entity()
