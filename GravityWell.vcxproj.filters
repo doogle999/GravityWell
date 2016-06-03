@@ -24,6 +24,9 @@
     <ClInclude Include="GravityField.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EntityCont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PVector.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GravityField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityCont.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -125,11 +125,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityCont.h" />
     <ClInclude Include="GravityField.h" />
     <ClInclude Include="PVector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityCont.cpp" />
     <ClCompile Include="GravityField.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PVector.cpp" />

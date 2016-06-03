@@ -1,23 +1,23 @@
 #include "Entity.h"
 
-const double Entity::density = 1000000;
-
-const sf::Color Entity::color = sf::Color::White;
+const double Entity::density = 10000000000;
 
 Entity::Entity()
 {
-	shape.setFillColor(color);
+	shape.setFillColor(sf::Color::White);
 }
 
-Entity::Entity(PVector position, PVector velocity, PVector acceleration, double mass)
+Entity::Entity(PVector position, PVector velocity, PVector acceleration, double mass, sf::Color color)
 {
 	this->position = position;
 	this->velocity = velocity;
 	this->acceleration = acceleration;
 	this->mass = mass;
 
-	shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double)1 / 3));
-	shape.setFillColor(color);
+	shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double) 1 / 3));
+	shape.setOrigin(shape.getRadius(), shape.getRadius());
+
+	this->shape.setFillColor(color);
 }
 
 void Entity::setPose(PVector position, PVector velocity, PVector acceleration)
@@ -56,8 +56,18 @@ void Entity::update(double deltaTime)
 
 sf::CircleShape Entity::getShape() const { return this->shape; }
 
-void Entity::setMass(double mass) { this->mass = mass; shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double)1 / 3)); }
+void Entity::setMass(double mass) 
+{
+	this->mass = mass; 
+	shape.setRadius(pow(3 / (4 * PI) * (mass / density), (double) 1 / 3)); 
+	shape.setOrigin(shape.getRadius(), shape.getRadius()); 
+}
 double Entity::getMass() const { return this->mass; }
+
+void Entity::setColor(sf::Color color)
+{
+	this->shape.setFillColor(color);
+}
 
 Entity::~Entity()
 {

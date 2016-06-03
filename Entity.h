@@ -16,14 +16,13 @@ class Entity
 
 		double mass;
 		static const double density;
-
+		
 		sf::CircleShape shape;
-		static const sf::Color color;
 
 	public:
 		Entity();
 
-		Entity(PVector position, PVector velocity, PVector acceleration, double mass);
+		Entity(PVector position, PVector velocity, PVector acceleration, double mass, sf::Color color);
 
 		void setPose(PVector position, PVector velocity, PVector acceleration);
 		void setPose(double positionX, double positionY, double velocityX, double velocityY, double accelerationX, double accelerationY);
@@ -46,6 +45,8 @@ class Entity
 
 		void setMass(double mass);
 		double getMass() const;
+
+		void setColor(sf::Color color);
 
 		~Entity();
 };

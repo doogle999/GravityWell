@@ -4,16 +4,17 @@
 
 #include <chrono>
 #include <ratio>
+#include <vector>
 
 #include "PVector.h"
 #include "Entity.h"
 #include "GravityField.h"
 
 typedef std::chrono::duration<double, std::ratio<1, 1000>> milliseconds;
-const milliseconds MS_PER_UPDATE(50);
+const milliseconds MS_PER_UPDATE(5);
 
-const int WINDOW_HEIGHT = 600;
-const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 1000;
+const int WINDOW_WIDTH = 1600;
 
 int main()
 {
@@ -21,6 +22,13 @@ int main()
 
 	std::chrono::steady_clock::time_point previous = std::chrono::steady_clock::now();
 	milliseconds lag(0);
+
+	GravityField planets;
+
+	planets.setColor(sf::Color::Green);
+
+	planets.addEntity(800, 500, 0, 0, 0, 0, 100000000000000000);
+	planets.addEntity(800, 100, 129.13, 0, 0, 0, 1000000000000000);
 
 	while (window.isOpen())
 	{
@@ -40,10 +48,19 @@ int main()
 
 		while (lag >= MS_PER_UPDATE)
 		{
+			planets.updateAll(MS_PER_UPDATE.count());
 			lag -= MS_PER_UPDATE;
 		}
 
 		window.clear();
+		
+		std::vector<sf::CircleShape> shapes = planets.getShapes();
+
+		for (unsigned int i = 0; i < shapes.size(); i++)
+		{
+			window.draw(shapes[i]);
+		}
+
 		window.display();
 	}
 
