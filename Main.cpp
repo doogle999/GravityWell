@@ -13,6 +13,8 @@
 typedef std::chrono::duration<double, std::ratio<1, 1000>> milliseconds;
 const milliseconds MS_PER_UPDATE(5);
 
+const double METERS_PER_PIXEL = 10;
+
 const int WINDOW_HEIGHT = 900;
 const int WINDOW_WIDTH = 1600;
 
@@ -27,10 +29,8 @@ int main()
 
 	planets.setColor(sf::Color::Green);
 
-	planets.addEntity(400, 200, 0, 0, 0, 0, 10000000000000000);
-	planets.addEntity(470, 300, 0, 0, 0, 0, 10000000000000000);
-	planets.addEntity(80, 238, 0, 0, 0, 0, 10000000000000000);
-	planets.addEntity(800, 650, 0, 0, 0, 0, 10000000000000000);
+	planets.addEntity(800, 50, 129.17, 0, 0, 0, 10000000000000000);
+	planets.addEntity(800, 450, 0, 0, 0, 0, 100000000000000000);
 
 	while (window.isOpen())
 	{
@@ -60,6 +60,9 @@ int main()
 
 		for (unsigned int i = 0; i < shapes.size(); i++)
 		{
+			shapes[i].setPosition(shapes[i].getPosition() / (float) METERS_PER_PIXEL);
+
+			shapes[i].setScale(1 / METERS_PER_PIXEL, 1 / METERS_PER_PIXEL);
 			window.draw(shapes[i]);
 		}
 

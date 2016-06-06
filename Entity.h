@@ -14,8 +14,8 @@ class Entity
 		PVector velocity;
 		PVector acceleration;
 
-		double mass;
-		static const double density;
+		double mass; // kg
+		static const double density; // kg / m^3 ( Doesn't actually need to be accurate, used as size scaling)
 		
 		sf::CircleShape shape;
 
