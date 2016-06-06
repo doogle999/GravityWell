@@ -46,6 +46,8 @@ class Entity
 		void setMass(double mass);
 		double getMass() const;
 
+		double getRadius() const;
+
 		void setColor(sf::Color color);
 
 		~Entity();
