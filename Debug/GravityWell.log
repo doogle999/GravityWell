@@ -1,4 +1,4 @@
 ﻿  Main.cpp
-c:\users\user\documents\visual studio 2015\projects\gravitywell\gravitywell\main.cpp(65): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\user\documents\visual studio 2015\projects\gravitywell\gravitywell\main.cpp(67): warning C4305: 'argument': truncation from 'double' to 'float'
   GravityWell.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\GravityWell\Debug\GravityWell.exe
   GravityWell.vcxproj -> C:\Users\User\documents\visual studio 2015\Projects\GravityWell\Debug\GravityWell.pdb (Partial PDB)

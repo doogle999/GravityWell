@@ -11,9 +11,11 @@
 #include "GravityField.h"
 
 typedef std::chrono::duration<double, std::ratio<1, 1000>> milliseconds;
-const milliseconds MS_PER_UPDATE(5);
+const milliseconds MS_PER_UPDATE(20);
 
-const double METERS_PER_PIXEL = 10;
+const double METERS_PER_PIXEL = 500000000;
+
+const double TIME_SCALE = 864000;
 
 const int WINDOW_HEIGHT = 900;
 const int WINDOW_WIDTH = 1600;
@@ -29,8 +31,8 @@ int main()
 
 	planets.setColor(sf::Color::Green);
 
-	planets.addEntity(800, 50, 129.17, 0, 0, 0, 10000000000000000);
-	planets.addEntity(800, 450, 0, 0, 0, 0, 100000000000000000);
+	planets.addEntity(2.992e11, 84150000000, 0, 30000, 0, 0, 5.972e24);
+	planets.addEntity(1.496e11, 84150000000, 0, 0, 0, 0, 1.989e30);
 
 	while (window.isOpen())
 	{
@@ -50,7 +52,7 @@ int main()
 
 		while (lag >= MS_PER_UPDATE)
 		{
-			planets.updateAll(MS_PER_UPDATE.count());
+			planets.updateAll(MS_PER_UPDATE.count() * TIME_SCALE);
 			lag -= MS_PER_UPDATE;
 		}
 

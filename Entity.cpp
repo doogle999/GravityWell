@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-const double Entity::density = 100000000000;
+const double Entity::density = 0.01;
 
 Entity::Entity()
 {
